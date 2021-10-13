@@ -15,7 +15,7 @@ Javascript, MYSQL, Sequelize, Packages(MySQL2, dotenv), and more.
 ## Github-Link
 https://github.com/LukeMcHenry311/E-Com-Mogui
 ## Video
-https://www.youtube.com/watch?v=fy42M5yAi8g
+https://youtu.be/fy42M5yAi8g
 ## Collaborations
 StackOverflow, Classmates, Blogs, Youtube, Relatives in the field.
 ## Struggles
