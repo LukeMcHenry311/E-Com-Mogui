@@ -3,7 +3,7 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 
 router.get("/", (req, res) => {
   Product.findAll({
-    attributes: ["id", "product-name", "price", "stock", "category_id"],
+    attributes: ["id", "product_name", "price", "stock", "category_id"],
     include: [
       {
         model: Category,
@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
   })
     .then((data) => {
       if (!data) {
-        res.status(404).json({ message: "product not found" });
+        res.status(404).json({ message: "No product found with this id" });
         return;
       }
       res.json(data);
@@ -59,6 +59,7 @@ router.post("/", (req, res) => {
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }
+
       res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
@@ -79,16 +80,17 @@ router.put("/:id", (req, res) => {
     })
     .then((productTags) => {
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
-      const newProductTags = req.body.tagIds.filter((tag_id) => {
-        return {
-          product_id: req.params.id,
-          tag_id,
-        };
-      });
+      const newProductTags = req.body.tagIds
+        .filter((tag_id) => !productTagIds.includes(tag_id))
+        .map((tag_id) => {
+          return {
+            product_id: req.params.id,
+            tag_id,
+          };
+        });
       const productTagsToRemove = productTags
         .filter(({ tag_id }) => !req.body.tagIds.includes(tag_id))
         .map(({ id }) => id);
-
       return Promise.all([
         ProductTag.destroy({ where: { id: productTagsToRemove } }),
         ProductTag.bulkCreate(newProductTags),
@@ -108,7 +110,7 @@ router.delete("/:id", (req, res) => {
   })
     .then((data) => {
       if (!data) {
-        res.status(404).json({ message: "Product not found" });
+        res.status(404).json({ message: "No product found with this id" });
         return;
       }
       res.json(data);
