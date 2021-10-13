@@ -1,9 +1,51 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
-router.get("/", (req, res) => {});
+router.get("/", (req, res) => {
+  Product.findAll({
+    attributes: ["id", "product-name", "price", "stock", "category_id"],
+    include: [
+      {
+        model: Category,
+      },
+      {
+        model: Tag,
+      },
+    ],
+  })
+    .then((data) => res.json(data))
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
-router.get("/:id", (req, res) => {});
+router.get("/:id", (req, res) => {
+  Product.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "product_name", "price", "stock", "category_id"],
+    include: [
+      {
+        model: Category,
+      },
+      {
+        model: Tag,
+      },
+    ],
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).json({ message: "product not found" });
+        return;
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.post("/", (req, res) => {
   Product.create(req.body)
