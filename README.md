@@ -2,6 +2,7 @@
 
 ## Table of Contents
 * [Description](#description)
+* [Instructions](#instructions)
 * [Technologies](#technologies)
 * [Github Link](#github-link)
 * [Video](#video)
@@ -9,13 +10,15 @@
 * [Struggles](#struggles)
 
 ## Description
-application using MySQL and Sequelize to access MySQL database. 
+application using MySQL and Sequelize to access MySQL database.
+## Instructions
+git clone the repo, type `npm i` in the terminal, then create a .env file with db NAME, USER, and PW. Then type `node seeds/index.js` followed by `node server.js` then open up insomnia and look at the routes!
 ## Technologies
 Javascript, MYSQL, Sequelize, Packages(MySQL2, dotenv), and more.
 ## Github-Link
 https://github.com/LukeMcHenry311/E-Com-Mogui
 ## Video
-https://www.youtube.com/watch?v=fy42M5yAi8g
+https://youtu.be/fy42M5yAi8g
 ## Collaborations
 StackOverflow, Classmates, Blogs, Youtube, Relatives in the field.
 ## Struggles
