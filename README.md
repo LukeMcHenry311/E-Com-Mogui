@@ -1,15 +1,12 @@
 # E-Com-Mogui
 
 ## Table of Contents
-* [Screenshot](#screenshot)
 * [Description](#description)
 * [Technologies](#technologies)
 * [Github Link](#github-link)
 * [Video](#video)
 * [Collaborations](#collaborations)
 * [Struggles](#struggles)
-
-## Screenshot
 
 ## Description
 application using MySQL and Sequelize to access MySQL database. 
@@ -18,7 +15,7 @@ Javascript, MYSQL, Sequelize, Packages(MySQL2, dotenv), and more.
 ## Github-Link
 https://github.com/LukeMcHenry311/E-Com-Mogui
 ## Video
-https://www.youtube.com/watch?v=PyFQs6qMdys
+https://www.youtube.com/watch?v=fy42M5yAi8g
 ## Collaborations
 StackOverflow, Classmates, Blogs, Youtube, Relatives in the field.
 ## Struggles
